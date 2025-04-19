@@ -1,0 +1,93 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+struct Product {
+    string name;
+    double price;
+    int quantity;
+};
+
+vector<Product> products;
+
+void addProduct() {
+    Product p;
+    cout << "اسم المنتج: ";
+    cin.ignore();
+    getline(cin, p.name);
+    cout << "السعر: ";
+    cin >> p.price;
+    cout << "الكمية: ";
+    cin >> p.quantity;
+    products.push_back(p);
+    cout << "✅ تم إضافة المنتج.\n";
+}
+
+void showProducts() {
+    if (products.empty()) {
+        cout << "🚫 لا توجد منتجات.\n";
+        return;
+    }
+    cout << "\n📦 قائمة المنتجات:\n";
+    for (size_t i = 0; i < products.size(); ++i) {
+        cout << i + 1 << ". " << products[i].name
+             << " - السعر: " << products[i].price
+             << " ريال - الكمية: " << products[i].quantity << "\n";
+    }
+}
+
+void updateProduct() {
+    int index;
+    showProducts();
+    cout << "أدخل رقم المنتج للتعديل: ";
+    cin >> index;
+    if (index < 1 || index > products.size()) {
+        cout << "❌ رقم غير صالح.\n";
+        return;
+    }
+    index--;
+    cout << "أدخل السعر الجديد: ";
+    cin >> products[index].price;
+    cout << "أدخل الكمية الجديدة: ";
+    cin >> products[index].quantity;
+    cout << "✅ تم التعديل بنجاح.\n";
+}
+
+void deleteProduct() {
+    int index;
+    showProducts();
+    cout << "أدخل رقم المنتج للحذف: ";
+    cin >> index;
+    if (index < 1 || index > products.size()) {
+        cout << "❌ رقم غير صالح.\n";
+        return;
+    }
+    products.erase(products.begin() + index - 1);
+    cout << "🗑️ تم حذف المنتج.\n";
+}
+
+int main() {
+    int choice;
+    do {
+        cout << "\n📋 إدارة متجر جرين ماركت:\n";
+        cout << "1. إضافة منتج\n";
+        cout << "2. عرض المنتجات\n";
+        cout << "3. تعديل منتج\n";
+        cout << "4. حذف منتج\n";
+        cout << "5. خروج\n";
+        cout << "اختر خيارك: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: addProduct(); break;
+            case 2: showProducts(); break;
+            case 3: updateProduct(); break;
+            case 4: deleteProduct(); break;
+            case 5: cout << "👋 إلى اللقاء!\n"; break;
+            default: cout << "❗ خيار غير صالح.\n";
+        }
+    } while (choice != 5);
+
+    return 0;
+}
