@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جرين ماركت</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="شعار جرين ماركت" class="logo">
+    <h1>جرين ماركت</h1>
+  </header>
+
+  <main>
+    <section class="categories">
+      <h2>الأقسام</h2>
+      <ul>
+        <li>فواكه</li>
+        <li>خضروات</li>
+        <li>بهارات</li>
+        <li>معلبات</li>
+      </ul>
+    </section>
+
+    <section class="products">
+      <h2>المنتجات</h2>
+      <div id="product-list"></div>
+    </section>
+
+    <section class="add-product">
+      <h2>إضافة منتج</h2>
+      <form id="product-form">
+        <input type="text" id="product-name" placeholder="اسم المنتج" required>
+        <input type="number" id="product-price" placeholder="السعر" required>
+        <input type="number" id="product-quantity" placeholder="الكمية" required>
+        <input type="url" id="product-image" placeholder="رابط الصورة" required>
+        <button type="submit">إضافة</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>للتواصل معنا عبر واتساب</p>
+    <a href="https://wa.me/966500756060" target="_blank" class="whatsapp-btn">راسلنا الآن</a>
+    <p>تم إنشاؤه بواسطة محمود أشرف ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
